@@ -3,6 +3,17 @@
 #define AOC_1_H
 #include<vector>
 
+const std::vector<const std::string> DIGITS = {
+  "one",
+  "two",
+  "three",
+  "four",
+  "five",
+  "six",
+  "seven",
+  "eight",
+  "nine"
+};
 class Day1 {
 
 public:
