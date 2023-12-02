@@ -59,8 +59,7 @@ class Game {
 
   void SetGameId() {
     size_t idx = INPUT_.find(':');
-    std::string game_id_str = INPUT_.substr(0, idx);
-    this->game_id_ = stoi(game_id_str.substr(game_id_str.find(' ')));
+    this->game_id_ = stoi(INPUT_.substr(5, idx - 5));
     this->game_id_idx_ = idx;
   }
 };
