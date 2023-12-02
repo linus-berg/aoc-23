@@ -1,5 +1,5 @@
-#ifndef AOC_GAMESET_H
-#define AOC_GAMESET_H
+#ifndef AOC_DAYS_DAY2_GAMESET_H_
+#define AOC_DAYS_DAY2_GAMESET_H_
 #include<string>
 #include<vector>
 #include<map>
@@ -10,8 +10,8 @@
 class GameSet {
  public:
 
-  explicit GameSet(const std::string &set) {
-    this->ParseSet(set);
+  explicit GameSet(const std::string &set) : SET_{set} {
+    this->ParseSet();
   }
 
   int GetColour(const std::string &colour) {
@@ -19,25 +19,28 @@ class GameSet {
   }
 
   bool IsValidSet() {
-    return GetColour("red") <= MAX_RED && GetColour("green") <= MAX_GREEN
-        && GetColour("blue") <= MAX_BLUE;
+    for (const std::string &colour : G_COLOURS) {
+      if (GetColour(colour) > G_COLOURS_MAX.at(colour)) {
+        return false;
+      }
+    }
+    return true;
   }
 
  private:
+  const std::string &SET_;
   std::map<std::string, int> colours_{};
 
-  void ParseSet(const std::string &set) {
+  void ParseSet() {
     std::vector<std::string> colours;
-    boost::split(colours, set, boost::is_any_of(","));
-
+    boost::split(colours, SET_, boost::is_any_of(","));
     for (const std::string &colour : colours) {
       size_t colour_idx = colour.rfind(' ');
       std::string key = colour.substr(colour_idx + 1);
-      int value = stoi(colour.substr(1, colour_idx - 1));
-      colours_[key] = value;
+      colours_[key] = stoi(colour.substr(1, colour_idx - 1));
     }
   }
 
 };
 
-#endif//AOC_GAMESET_H
+#endif//AOC_DAYS_DAY2_GAMESET_H_

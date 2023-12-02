@@ -18,11 +18,9 @@ add_executable(aoc main.cpp
         utils/common.cpp
         utils/common.h
         days/Day1/Day1.cpp
-        days/base.cpp
         days/Day1/Day1.h
         days/Day2/Day2.cpp
         days/Day2/Day2.h
-        days/basic.h
         days/Day2/Game.h
         days/Day2/GameSet.h
         days/Day2/const.h)

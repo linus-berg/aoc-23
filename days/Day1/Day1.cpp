@@ -79,7 +79,7 @@ std::tuple<int, size_t> Day1::FindDigit(const std::string &line, bool reverse) {
   size_t best = reverse ? 0 : std::string::npos;
   int best_i = -1;
   int i = 0;
-  for (const auto & number : DIGITS) {
+  for (const auto & number : G_DIGITS) {
     i++;
     size_t index = reverse ? line.rfind(number) : line.find(number);
     if (index == std::string::npos) {

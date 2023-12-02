@@ -1,12 +1,10 @@
-/*const std::map<std::string, int> Day2::MAX_ {
+#ifndef AOC_DAYS_DAY2_CONST_H_
+#define AOC_DAYS_DAY2_CONST_H_
+#include<map>
+const std::string G_COLOURS[]{"red", "green", "blue"};
+const std::map<std::string, int> G_COLOURS_MAX {
   {"red", 12},
   {"green", 13},
   {"blue", 14}
-};*/
-
-#ifndef AOC_CONST_H
-#define AOC_CONST_H
-const int MAX_RED = 12;
-const int MAX_GREEN = 13;
-const int MAX_BLUE = 14;
-#endif//AOC_CONST_H
+};
+#endif//AOC_DAYS_DAY2_CONST_H_

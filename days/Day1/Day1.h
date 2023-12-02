@@ -1,9 +1,9 @@
 
-#ifndef AOC_1_H
-#define AOC_1_H
+#ifndef AOC_DAYS_DAY1_DAY1_H_
+#define AOC_DAYS_DAY1_DAY1_H_
 #include<vector>
 
-const std::vector<const std::string> DIGITS = {
+const std::vector<const std::string> G_DIGITS = {
     "one",
     "two",
     "three",
@@ -26,4 +26,4 @@ class Day1 {
   std::tuple<int, size_t> FindDigit(const std::string &line, bool reverse);
   std::tuple<int, size_t> Find(const std::string &line, bool reverse);
 };
-#endif//AOC_1_H
+#endif//AOC_DAYS_DAY1_DAY1_H_

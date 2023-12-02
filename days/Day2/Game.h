@@ -1,66 +1,67 @@
-#ifndef AOC_GAME_H
-#define AOC_GAME_H
+#ifndef AOC_DAYS_DAY2_GAME_H_
+#define AOC_DAYS_DAY2_GAME_H_
 #include <boost/algorithm/string.hpp>
 #include <string>
 #include <vector>
+#include <map>
 #include "GameSet.h"
 #include "const.h"
 class Game {
  public:
-  explicit Game(const std::string &input) {
-    this->ParseGame(input);
+  explicit Game(const std::string &input) : INPUT_{input} {
+    this->ParseGame();
   }
   [[nodiscard]] int GetGameId() const {
-    return this->game_id;
+    return this->game_id_;
   }
 
   [[nodiscard]] bool IsValidGame() const {
-    return !this->invalid;
+    return !this->invalid_;
   }
 
   [[nodiscard]] int GetGamePower() const {
-    return max_red * max_green * max_blue;
+    return max_.at("red") * max_.at("green") * max_.at("blue");
   }
 
  private:
-  int game_id = 0;
-  bool invalid = false;
-  int max_red = 0;
-  int max_green = 0;
-  int max_blue = 0;
+  /* Original INPUT_ */
+  const std::string &INPUT_;
 
-  void ParseGame(const std::string &input) {
-    size_t game_id_idx = this->SetGameId(input);
-    std::string game_play = input.substr(game_id_idx);
+  /* Game id */
+  int game_id_ = 0;
+  size_t game_id_idx_ = 0;
+
+  /* State */
+  bool invalid_ = false;
+  std::map<std::string, int> max_{};
+
+  void ParseGame() {
+    this->SetGameId();
+    std::string game_play = INPUT_.substr(game_id_idx_);
     std::vector<std::string> result;
     boost::split(result, game_play, boost::is_any_of(";"));
     for (const std::string &set : result) {
       GameSet game_set(set);
-      int set_red = game_set.GetColour("red");
-      if (max_red < set_red) {
-        max_red = set_red;
+      /* Update max_ values */
+      for (const std::string &colour : G_COLOURS) {
+        int colour_value = game_set.GetColour(colour);
+        int colour_max = max_[colour];
+        if (colour_max < colour_value) {
+          max_[colour] = colour_value;
+        }
       }
-      int set_green = game_set.GetColour("green");
-      if (max_green < set_green) {
-        max_green = set_green;
-      }
-      int set_blue = game_set.GetColour("blue");
-      if (max_blue < set_blue) {
-        max_blue = set_blue;
-      }
-
       /* Part 1 */
       if (!game_set.IsValidSet()) {
-        invalid = true;
+        invalid_ = true;
       }
     }
   }
 
-  size_t SetGameId(const std::string &input) {
-    size_t game_id_idx = input.find(':');
-    std::string game_id_str = input.substr(0, game_id_idx);
-    this->game_id = stoi(game_id_str.substr(game_id_str.find(' ')));
-    return game_id_idx + 1;
+  void SetGameId() {
+    size_t idx = INPUT_.find(':');
+    std::string game_id_str = INPUT_.substr(0, idx);
+    this->game_id_ = stoi(game_id_str.substr(game_id_str.find(' ')));
+    this->game_id_idx_ = idx;
   }
 };
-#endif//AOC_GAME_H
+#endif//AOC_DAYS_DAY2_GAME_H_
