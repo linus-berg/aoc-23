@@ -1,7 +1,7 @@
 #include<string>
 #include<vector>
 #include<iostream>
-#include "1.h"
+#include "Day1.h"
 
 int Day1::Run(const std::vector<std::string> &input) {
   this->Solve(input);

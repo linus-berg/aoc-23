@@ -5,13 +5,12 @@
 
 class Day2 {
 
-public:
+ public:
   int Run(const std::vector<std::string> &input);
 
-private:
+ private:
   int Solve(const std::vector<std::string> &input);
   int Solve2(const std::vector<std::string> &input);
 };
-
 
 #endif//AOC_DAY2_H

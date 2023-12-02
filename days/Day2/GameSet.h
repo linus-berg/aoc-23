@@ -5,10 +5,12 @@
 #include<map>
 #include<iostream>
 #include<boost/algorithm/string.hpp>
-#include "const.h";
+#include "const.h"
+
 class GameSet {
  public:
-  GameSet(const std::string &set) {
+
+  explicit GameSet(const std::string &set) {
     this->ParseSet(set);
   }
 

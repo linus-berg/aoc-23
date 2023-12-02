@@ -7,24 +7,23 @@
 #include "const.h"
 class Game {
  public:
-
-  Game(const std::string &input) {
+  explicit Game(const std::string &input) {
     this->ParseGame(input);
   }
-  int GetGameId() {
+  [[nodiscard]] int GetGameId() const {
     return this->game_id;
   }
 
-  bool IsValidGame() {
+  [[nodiscard]] bool IsValidGame() const {
     return !this->invalid;
   }
 
-  int GetGamePower() {
+  [[nodiscard]] int GetGamePower() const {
     return max_red * max_green * max_blue;
   }
 
  private:
-  int game_id;
+  int game_id = 0;
   bool invalid = false;
   int max_red = 0;
   int max_green = 0;

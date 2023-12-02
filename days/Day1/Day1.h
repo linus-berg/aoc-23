@@ -4,21 +4,21 @@
 #include<vector>
 
 const std::vector<const std::string> DIGITS = {
-  "one",
-  "two",
-  "three",
-  "four",
-  "five",
-  "six",
-  "seven",
-  "eight",
-  "nine"
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
+    "six",
+    "seven",
+    "eight",
+    "nine"
 };
 class Day1 {
 
-public:
+ public:
   int Run(const std::vector<std::string> &input);
-private:
+ private:
   int Solve(const std::vector<std::string> &input);
   int ConvertNumber(int a, int b);
   int AddNumbers(const std::vector<std::string> &input);

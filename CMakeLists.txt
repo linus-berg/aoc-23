@@ -17,9 +17,9 @@ endif()
 add_executable(aoc main.cpp
         utils/common.cpp
         utils/common.h
-        days/1.cpp
+        days/Day1/Day1.cpp
         days/base.cpp
-        days/1.h
+        days/Day1/Day1.h
         days/Day2/Day2.cpp
         days/Day2/Day2.h
         days/basic.h
