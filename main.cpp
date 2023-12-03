@@ -1,14 +1,12 @@
 #include <iostream>
 #include "utils/common.h"
-#include "days/Day2/Day2.h"
+#define DAY 3
+#include "days/Day3/Day3.h"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
-
-    Common common;
-
-    std::vector<std::string> content = common.GetFileContent(2);
-    Day2 d;
-    int result = d.Run(content);
-    return 0;
+  Common common;
+  std::vector<std::string> content = common.GetFileContent(DAY);
+  Day3 d;
+  int result = d.Run(content);
+  return 0;
 }

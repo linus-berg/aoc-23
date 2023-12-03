@@ -1,5 +1,5 @@
-#ifndef AOC_DAY2_H
-#define AOC_DAY2_H
+#ifndef AOC_DAYS_DAY2_DAY2_H_
+#define AOC_DAYS_DAY2_DAY2_H_
 #include<map>
 
 class Day2 {
@@ -11,4 +11,4 @@ class Day2 {
   int Solve(const std::vector<std::string> &input);
 };
 
-#endif//AOC_DAY2_H
+#endif//AOC_DAYS_DAY2_DAY2_H_

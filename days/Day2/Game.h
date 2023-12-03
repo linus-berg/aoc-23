@@ -37,7 +37,7 @@ class Game {
 
   void ParseGame() {
     this->SetGameId();
-    std::string game_play = INPUT_.substr(game_id_idx_);
+    std::string game_play = INPUT_.substr(game_id_idx_ + 1);
     std::vector<std::string> result;
     boost::split(result, game_play, boost::is_any_of(";"));
     for (const std::string &set : result) {

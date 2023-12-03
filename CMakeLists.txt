@@ -13,6 +13,7 @@ if(Boost_FOUND)
 
 endif()
 
+include_directories(include)
 
 add_executable(aoc main.cpp
         utils/common.cpp
@@ -23,7 +24,12 @@ add_executable(aoc main.cpp
         days/Day2/Day2.h
         days/Day2/Game.h
         days/Day2/GameSet.h
-        days/Day2/const.h)
+        days/Day2/const.h
+        days/Day3/Day3.cpp
+        days/Day3/Day3.h
+        days/Day3/Grid.h
+        include/base.h
+        days/Day3/GridNumber.h)
 
 if(Boost_FOUND)
     target_link_libraries(aoc ${Boost_LIBRARIES})
