@@ -40,43 +40,36 @@ class Grid {
         if (isdigit(line[i])) {
           std::stringstream number_str;
           std::vector<int> occupies{};
-          while (i < l && line[i] != '.' && isdigit(line[i])) {
+          do {
             number_str << line[i];
             occupies.push_back(i);
             grid_[y].push_back(line[i]);
             i++;
-          }
-          if (i < l) {
-            grid_[y].push_back(line[i]);
-          }
+          } while (i < l && line[i] != '.' && isdigit(line[i]));
           std::shared_ptr<GridNumber>
               number = std::make_shared<GridNumber>(number_str.str());
           for (int occupied : occupies) {
             numbers_[GetNumber(occupied, y)] = number;
           }
-        } else {
+        }
+        if (i < l) {
           grid_[y].push_back(line[i]);
         }
-      }
-      if (grid_[y].size() < 140 || grid_[y].size() > 140) {
-        std::cout << grid_[y].size() << std::endl;
       }
       y++;
     }
   }
 
   void FindPointsOfInterest() {
-    int y = 0;
     int total = 0;
-    for (const std::vector<char> &x_v : grid_) {
-      int x = 0;
-      for (char ch : x_v) {
+    for (int y = 0; y < grid_.size(); y++) {
+      const std::vector<char> &x_v = grid_[y];
+      for (int x = 0; x < x_v.size(); x++) {
+        char ch = x_v[x];
         if (!isdigit(ch) && ch != '.') {
           total += FindSurroundingNumbers(x, y);
         }
-        x++;
       }
-      y++;
     }
     std::cout << "Gear ratio: " << total << std::endl;
   }
