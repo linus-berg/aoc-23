@@ -83,15 +83,17 @@ class Grid {
 
   int FindSurroundingNumbers(int x, int y) {
     std::map<std::string, std::shared_ptr<GridNumber>> found{};
-    char m = grid_[y][x];
     std::vector<std::pair<int, int>> pairs{};
+
     for (int adj = 0; adj < 4; adj++) {
       int sin = (int) std::sin(M_PI / 2 + M_PI * std::floor(adj / 2));
       int cos = (int) std::cos(M_PI * adj);
+      int corner_x = x + cos;
+      int corner_y = y + sin;
       /* Corner */
-      pairs.emplace_back(x + cos, y + sin);
+      pairs.emplace_back(corner_x, corner_y);
       /* Center point */
-      pairs.emplace_back(sin != cos ? x + cos : x, sin != cos ? y : y + sin);
+      pairs.emplace_back(sin != cos ? corner_x : x, sin != cos ? y : corner_y);
 
       for (const std::pair<int, int> &pair : pairs) {
         int x_p = pair.first;
@@ -109,7 +111,7 @@ class Grid {
       }
     }
 
-    if (m == '*' && found.size() == 2) {
+    if (grid_[y][x] == '*' && found.size() == 2) {
       auto it = found.begin();
       std::shared_ptr<GridNumber> a = it->second;
       std::shared_ptr<GridNumber> b = (++it)->second;
