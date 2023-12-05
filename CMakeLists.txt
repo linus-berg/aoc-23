@@ -29,7 +29,10 @@ add_executable(aoc main.cpp
         days/Day3/Day3.h
         days/Day3/Grid.h
         include/base.h
-        days/Day3/GridNumber.h)
+        days/Day3/GridNumber.h
+        days/Day4/Day4.cpp
+        days/Day4/Day4.h
+        days/Day4/Card.h)
 
 if(Boost_FOUND)
     target_link_libraries(aoc ${Boost_LIBRARIES})
