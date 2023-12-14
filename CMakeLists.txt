@@ -35,7 +35,9 @@ add_executable(aoc main.cpp
         days/Day4/Card.h
         days/Day6/Day6.cpp
         days/Day6/Day6.h
-        days/Day6/Race.h)
+        days/Day6/Race.h
+        days/Day14/Day14.h
+        days/Day14/Day14.cpp)
 
 if(Boost_FOUND)
     target_link_libraries(aoc ${Boost_LIBRARIES})

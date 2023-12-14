@@ -1,12 +1,12 @@
 #include <iostream>
 #include "utils/common.h"
-#define DAY 6
-#include "days/Day6/Day6.h"
+#define DAY 14
+#include "days/Day14/Day14.h"
 
 int main() {
   Common common;
   std::vector<std::string> content = common.GetFileContent(DAY);
-  Day6 d;
-  int result = d.Run(content);
+  Day14 d;
+  d.Run(content);
   return 0;
 }
